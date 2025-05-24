@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+@theme {
+    --color-light-wood: #D1A26D;
+    --color-very-light-wood: #E5DBDB;
+    --color-my-brown: #986B39;
+    --color-my-black: #1E1E1E;
+    --color-my-gray: #3A3131;
+    --color-my-white: #FFF8F8;
+    --color-dull-brown: #534441;
+
+    --font-Inter: 'Inter';
+}
+
+@font-face {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../src/assets/fonts/inter/Inter_18pt-Regular.woff2") format("woff2");
+  }
