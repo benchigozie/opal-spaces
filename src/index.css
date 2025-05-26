@@ -10,6 +10,7 @@
     --color-dull-brown: #534441;
 
     --font-Inter: 'Inter';
+    --font-Inria: 'Inria Serif';
 }
 
 @font-face {
@@ -18,4 +19,20 @@
     font-weight: 400;
     font-display: swap;
     src: url("../src/assets/fonts/inter/Inter_18pt-Regular.woff2") format("woff2");
+  }
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../src/assets/fonts/inter/Inter_18pt-Bold.woff2") format("woff2");
+}
+
+  @font-face {
+    font-family: 'Inria Serif';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("../src/assets/fonts/inria_serif/InriaSerif-Bold.woff2") format("woff2");
   }

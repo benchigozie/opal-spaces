@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import logo from '../assets/images/logo.png';
-import Button from './button';
+import Button from './Button';
 import Hamburger from './Hamburger';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -14,7 +14,7 @@ function Header() {
   const toggleHamMenu = () => setHamMenuOpen(!hamMenuOpen);
 
   return (
-    <header className="bg-my-white flex justify-center py-2 shadow-md fixed w-full font-Inter text-my-black">
+    <header className="bg-my-white flex justify-center py-2 shadow-md fixed w-full font-Inter text-my-black z-20">
       <div className='flex justify-between px-4 max-w-[1300px] w-full items-center'>
         <a href="">
           <img src={logo} alt="" className='h-7' />
@@ -45,13 +45,13 @@ function Header() {
         </div>
         <div className='flex gap-4 md:gap-8'>
           <div>
-            <div className='flex cursor-pointer' onClick={toggleUserMenuOpen}>
+            <div className='flex cursor-pointer items-center' onClick={toggleUserMenuOpen}>
               <img src="src/assets/images/user.png" alt="" className='h-6' />
               <motion.div
                 animate={{ rotate: userMenuOpen ? 180 : 0 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
               >
-                <img src="src/assets/images/down-arrow.png" alt="" className='h-6' />
+                <img src="src/assets/images/down-arrow.png" alt="" className='h-4' />
               </motion.div>
 
             </div>
