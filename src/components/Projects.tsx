@@ -15,8 +15,7 @@ function Projects() {
                     <Project image={project1} name="Project CTU." location="Calgary, AB." style="Contemporary." description="A bold yet balanced redesign blending structured furniture, subtle texture, and dark-toned accents. This project challenged us to work with a more masculine palette while softening the overall mood." />
                     <Project image={project2} name="Modern Minimalist Condo." location="Vancouver, BC." style="Scandanavian Style." description="An airy loft layered with warm wood finishes, cozy textiles, and clean Scandinavian aesthetics. The goal was to make the open space feel more intimate while keeping it light andbreathable." />
                     <Project image={project3} name="Neutral Family Living Room." location="Mississauga, ON" style="Transitional" description="A timeless gathering space where comfort meets elegance. Neutral tones, plush seating, and subtle decorative detail. We carefully balanced formality with warmth to suit both everyday living and entertaining." />
-                    <Project image={project4} name="Coastal-Inspired Home Office." location="Victoria, BC." style="Coastal." description="A fresh, light-filled workspace with oceanic blues, natural 
-textures, and calming decor. The aim was to reflect the client’s love for the seaside without being overly themed. subtle, not literal." />
+                    <Project image={project4} name="Coastal-Inspired Home Office." location="Victoria, BC." style="Coastal." description="A fresh, light-filled workspace with oceanic blues, natural textures, and calming decor. The aim was to reflect the client’s love for the seaside without being overly themed. subtle, not literal." />
                 </div>
             </div>
         </section>
