@@ -4,6 +4,8 @@ import Services from "../components/Services";
 import Welcome from "../components/Welcome";
 import Testimonials from "../components/Testimonials";
 import CTA from "../components/CTA";
+import FeaturedProducts from "../components/FeaturedProducts";
+
 function Home() {
   return (
     <div>
@@ -13,6 +15,7 @@ function Home() {
       <Projects />
       <Testimonials />
       <CTA />
+      <FeaturedProducts />
     </div>
   )
 }
