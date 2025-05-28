@@ -5,7 +5,7 @@ type ServiceProps = {
 }
 function Service( { name, description, image } : ServiceProps) {
   return (
-    <div className="flex flex-col items-center justify-center gap-4 font-Inter bg-white rounded-xl py-12 px-5 md:px-6 shadow-md">
+    <div className="flex flex-col items-center justify-center gap-4 font-Inter bg-white rounded-xl py-12 px-5 md:px-6 shadow-md h-full">
         <div className="h-32 w-32 bg-my-gray rounded-full flex items-center justify-center mb-4 overflow-clip">
           <img src={image} alt="" />
         </div>
