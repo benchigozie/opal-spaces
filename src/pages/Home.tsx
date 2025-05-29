@@ -5,7 +5,6 @@ import Welcome from "../components/Welcome";
 import Testimonials from "../components/Testimonials";
 import CTA from "../components/CTA";
 import FeaturedProducts from "../components/FeaturedProducts";
-import SignUp from "../components/SignUp";
 
 function Home() {
   return (
@@ -17,7 +16,6 @@ function Home() {
       <Testimonials />
       <CTA />
       <FeaturedProducts />
-      <SignUp />
     </div>
   )
 }

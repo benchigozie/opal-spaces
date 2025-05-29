@@ -3,6 +3,7 @@ import logo from '../assets/images/logo.png';
 import Button from './Button';
 import Hamburger from './Hamburger';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 function Header() {
 
@@ -22,24 +23,12 @@ function Header() {
         <div className='w-1/2 md:block hidden'>
           <nav>
             <ul className='flex justify-around'>
-              <li>
-                <a href="">Home</a>
-              </li>
-              <li>
-                <a href="">About</a>
-              </li>
-              <li>
-                <a href="">Shop</a>
-              </li>
-              <li>
-                <a href="">Services</a>
-              </li>
-              <li>
-                <a href="">Port-Folio</a>
-              </li>
-              <li>
-                <a href="">Contact</a>
-              </li>
+            <Link className="hover:text-light-wood" to="/">Home</Link>
+            <Link className="hover:text-light-wood" to="/about">About</Link>
+            <Link className="hover:text-light-wood" to="/about">Shop</Link>
+            <Link className="hover:text-light-wood" to="/about">Services</Link>
+            <Link className="hover:text-light-wood" to="/about">Portfolio</Link>
+            <Link className="hover:text-light-wood" to="/about">Contact</Link>
             </ul>
           </nav>
         </div>

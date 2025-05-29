@@ -1,7 +1,9 @@
-
+import WhoWeAre from "../components/WhoWeAre"
 function About() {
   return (
-    <div>About</div>
+    <div className="pt-14">
+      <WhoWeAre />
+    </div>
   )
 }
 

@@ -11,7 +11,6 @@ function App() {
 
   return (
     <Routes>
-  {/* Pages with header/footer */}
   <Route element={<MainLayout />}>
     <Route path="/" element={<Home />} />
     <Route path="/about" element={<About />} />
