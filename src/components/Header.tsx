@@ -25,7 +25,7 @@ function Header() {
             <ul className='flex justify-around'>
             <Link className="hover:text-light-wood" to="/">Home</Link>
             <Link className="hover:text-light-wood" to="/about">About</Link>
-            <Link className="hover:text-light-wood" to="/about">Shop</Link>
+            <Link className="hover:text-light-wood" to="/shop">Shop</Link>
             <Link className="hover:text-light-wood" to="/about">Services</Link>
             <Link className="hover:text-light-wood" to="/about">Portfolio</Link>
             <Link className="hover:text-light-wood" to="/about">Contact</Link>

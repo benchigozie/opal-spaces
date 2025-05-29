@@ -1,7 +1,10 @@
+import ShopHero from "../components/ShopHero"
 
 function Shop() {
   return (
-    <div>Shop</div>
+    <div>
+      <ShopHero />
+    </div>
   )
 }
 
