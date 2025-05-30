@@ -3,12 +3,12 @@ import StarRating from "./StarRating";
 
 function Product() {
   return (
-    <div className="border-1 border-light-wood">
+    <div className="border-1 border-light-wood text-my-gray">
       <div className="h-52 w-full bg-gray-200">
-        
+
       </div>
-      <div className="px-6 py-8">
-        <h4 className="text-my-black">Product Name</h4>
+      <div className="px-6 py-8 flex flex-col gap-1 font-Inter">
+        <h4 className="text-my-black font-Inria font-bold text-xl">Product Name</h4>
         <div>
           <StarRating rating={4.5} amount={100} />
         </div>

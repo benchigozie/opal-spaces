@@ -4,11 +4,11 @@ function Footer() {
     return (
         <footer className='px-4 pt-20 bg-dull-brown text-my-white font-Inter'>
             <div className='max-w-[1300px] flex flex-col gap-3 mx-auto'>
-                <div className='grid grid-cols-1 md:grid-cols-[1fr_2fr] mb-16'>
+                <div className='grid grid-cols-1 md:grid-cols-[1fr_2fr] mb-16 gap-12'>
                     <div>
                         <img src={logo} alt="" className="h-14 md:h-24" />
                     </div>
-                    <div className='flex justify-between md:justify-around'>
+                    <div className='grid grid-cols-2 md:grid-cols-3 gap-y-8'>
                         <div className='flex flex-col gap-2'>
                             <h4 className='font-bold'>Company</h4>
                             <ul>
