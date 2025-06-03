@@ -9,6 +9,7 @@ import stylingGuide from '../assets/images/design-guide.webp';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
+
 const servicesArray = [
   {
     name: 'Space Planning',
@@ -51,7 +52,6 @@ const containerVariants = {
   },
 };
 
-
 const cardVariants = {
   hidden: { opacity: 0, y: -70 },
   visible: {
@@ -64,13 +64,14 @@ const cardVariants = {
   },
 };
 
+
 function Services() {
 
   const servicesDivRef = useRef(null);
   const isInView = useInView(servicesDivRef, { once: true, margin: '-100px' });
 
   return (
-    <section className="py-12 bg-very-light-wood px-4">
+    <section id="services" className="py-12 bg-very-light-wood px-4">
       <div className='max-w-[1300px] mx-auto flex flex-col gap-12'>
         <div className="flex flex-col items-center">
           <h2 className="text-my-black font-Inria font-bold text-2xl md:text-3xl">Our <span className="text-light-wood">Core</span> Services</h2>

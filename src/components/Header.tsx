@@ -5,6 +5,7 @@ import Hamburger from './Hamburger';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
+
 function Header() {
 
   const [userMenuOpen, setUserMenuOpen] = useState(false);
@@ -23,12 +24,12 @@ function Header() {
         <div className='w-1/2 md:block hidden'>
           <nav>
             <ul className='flex justify-around'>
-            <Link className="hover:text-light-wood" to="/">Home</Link>
-            <Link className="hover:text-light-wood" to="/about">About</Link>
-            <Link className="hover:text-light-wood" to="/shop">Shop</Link>
-            <Link className="hover:text-light-wood" to="/about">Services</Link>
-            <Link className="hover:text-light-wood" to="/about">Portfolio</Link>
-            <Link className="hover:text-light-wood" to="/contact">Contact</Link>
+              <Link className="hover:text-light-wood" to="/">Home</Link>
+              <Link className="hover:text-light-wood" to="/about">About</Link>
+              <Link className="hover:text-light-wood" to="/shop">Shop</Link>
+              <a href="/#services" className="hover:text-light-wood">Services</a>
+              <a href="/#projects" className="hover:text-light-wood">Portfolio</a>
+              <Link className="hover:text-light-wood" to="/contact">Contact</Link>
             </ul>
           </nav>
         </div>
@@ -73,23 +74,23 @@ function Header() {
                   className={`absolute top-full left-0 w-full h-screen bg-my-white md:hidden flex items-center justify-center`
                   }>
                   <ul className='flex flex-col text-lg w-full items-center relative -top-16'>
-                    <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center py-4' onClick={toggleHamMenu}>
-                      <a href="">Home</a>
+                    <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full h-full text-center' onClick={toggleHamMenu}>
+                      <Link className="hover:text-light-wood block w-full h-full py-4" to="/">Home</Link>
                     </li>
-                    <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center py-4' onClick={toggleHamMenu}>
-                      <a href="">About</a>
+                    <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center' onClick={toggleHamMenu}>
+                      <Link className="hover:text-light-wood block w-full h-full py-4" to="/about">About</Link>
                     </li>
-                    <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center py-4' onClick={toggleHamMenu}>
-                      <a href="">Shop</a>
+                    <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center' onClick={toggleHamMenu}>
+                      <Link className="hover:text-light-wood block w-full h-full py-4" to="/shop">Shop</Link>
                     </li>
-                    <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center py-4' onClick={toggleHamMenu}>
-                      <a href="">Services</a>
+                    <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center' onClick={toggleHamMenu}>
+                      <a href="/#services" className="hover:text-light-wood block w-full h-full py-4">Services</a>
                     </li>
-                    <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center py-4' onClick={toggleHamMenu}>
-                      <a href="">Port-Folio</a>
+                    <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center' onClick={toggleHamMenu}>
+                      <a href="/#projects" className="hover:text-light-wood block w-full h-full py-4">Portfolio</a>
                     </li>
-                    <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center py-4' onClick={toggleHamMenu}>
-                      <a href="">Contact</a>
+                    <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center' onClick={toggleHamMenu}>
+                      <Link className="hover:text-light-wood block w-full h-full py-4" to="/contact">Contact</Link>
                     </li>
                   </ul>
                 </motion.div>

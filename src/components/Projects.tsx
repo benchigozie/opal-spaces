@@ -6,7 +6,7 @@ import project4 from "../assets/images/project4.webp";
 
 function Projects() {
     return (
-        <section className="py-12 px-4 bg-my-white">
+        <section id="projects" className="py-12 px-4 bg-my-white">
             <div className="max-w-[1300px] flex flex-col mx-auto gap-12">
                 <div className="flex flex-col items-center mx-auto">
                     <h2 className="text-my-black font-Inria font-bold text-2xl md:text-3xl">Featured Projects</h2>

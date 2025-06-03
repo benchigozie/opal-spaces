@@ -5,8 +5,12 @@ import Welcome from "../components/Welcome";
 import Testimonials from "../components/Testimonials";
 import CTA from "../components/CTA";
 import FeaturedProducts from "../components/FeaturedProducts";
+import { useOutletContext } from "react-router-dom";
+
+
 
 function Home() {
+
   return (
     <div>
       <Hero />
