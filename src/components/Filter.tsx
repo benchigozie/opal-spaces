@@ -45,7 +45,7 @@ function Filter() {
                             </button>
                             {
                                 filterMenuState && (
-                                    <div className="absolute top-full bg-my-white flex flex-col shadow-md outline-none border-0">
+                                    <div className="absolute top-full right-0 md:right-auto bg-my-white flex flex-col shadow-md outline-none border-0">
                                         <div className="hover:bg-light-wood/50 px-4 py-[6px]">
                                             <a href="">Most Popular</a>
                                         </div>
