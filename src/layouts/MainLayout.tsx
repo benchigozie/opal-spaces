@@ -5,14 +5,14 @@ import SignUp from "../components/SignUp";
 
 function MainLayout() {
     return (
-        <body className="overflow-x-clip">
+        <div className="overflow-x-clip">
             <Header />
             <main className="">
                 <Outlet />
                 <SignUp />
             </main>
             <Footer />
-        </body>
+        </div>
     )
 };
 

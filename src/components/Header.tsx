@@ -28,7 +28,7 @@ function Header() {
             <Link className="hover:text-light-wood" to="/shop">Shop</Link>
             <Link className="hover:text-light-wood" to="/about">Services</Link>
             <Link className="hover:text-light-wood" to="/about">Portfolio</Link>
-            <Link className="hover:text-light-wood" to="/about">Contact</Link>
+            <Link className="hover:text-light-wood" to="/contact">Contact</Link>
             </ul>
           </nav>
         </div>

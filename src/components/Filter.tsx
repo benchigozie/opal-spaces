@@ -7,7 +7,7 @@ function Filter() {
 
     const options = ['Most Popular', 'Newest', 'Price: Low to High', 'Price: High to Low'];
 
-    const [filterMenuState, setFilterMenuState] = useState(true);
+    const [filterMenuState, setFilterMenuState] = useState(false);
     const toggleFilterMenuState = () => setFilterMenuState(!filterMenuState);
     const dropDownRef = useRef<HTMLDivElement | null>(null);
 
@@ -27,7 +27,7 @@ function Filter() {
     }, [filterMenuState]);
 
     return (
-        <div className="bg-my-white font-Inter flex justify-center shadow-md sticky top-[44px] md:top-14 z-20">
+        <div className="bg-my-white font-Inter flex justify-center shadow-md sticky top-[44px] md:top-14">
             <div className=' py-2 px-4 w-full flex justify-center'>
                 <div className="max-w-[1300px] w-full flex justify-between gap-4">
                     <div className="flex items-center  bg-my-white outline-1 outline-light-wood rounded-full px-4 py-2">
