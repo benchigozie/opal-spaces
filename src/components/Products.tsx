@@ -1,4 +1,3 @@
-import Button from "./Button";
 import Filter from "./Filter"
 import Product from "./Product";
 import { useState } from "react";

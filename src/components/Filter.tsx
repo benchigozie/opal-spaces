@@ -5,8 +5,6 @@ import { useState, useEffect, useRef } from 'react';
 
 function Filter() {
 
-    const options = ['Most Popular', 'Newest', 'Price: Low to High', 'Price: High to Low'];
-
     const [filterMenuState, setFilterMenuState] = useState(false);
     const toggleFilterMenuState = () => setFilterMenuState(!filterMenuState);
     const dropDownRef = useRef<HTMLDivElement | null>(null);
