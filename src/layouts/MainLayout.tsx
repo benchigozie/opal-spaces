@@ -1,7 +1,7 @@
 import { Outlet} from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import SignUp from "../components/SignUp";
+import SignUp from "../components/NewsSignUp";
 import useRouterScroll from "../hooks/reactrouterscroll";
 
 
