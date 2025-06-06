@@ -26,7 +26,8 @@ function Header() {
             <ul className='flex justify-around'>
               <Link className="hover:text-light-wood" to="/">Home</Link>
               <Link className="hover:text-light-wood" to="/about">About</Link>
-              <Link className="hover:text-light-wood" to="/shop">Shop</Link>
+             {/* <Link className="hover:text-light-wood" to="/shop">Shop</Link> */}
+              <a href="" className="hover:text-light-wood">Shop</a>
               <a href="/#services" className="hover:text-light-wood">Services</a>
               <a href="/#projects" className="hover:text-light-wood">Portfolio</a>
               <Link className="hover:text-light-wood" to="/contact">Contact</Link>
@@ -81,7 +82,8 @@ function Header() {
                       <Link className="hover:text-light-wood block w-full h-full py-4" to="/about">About</Link>
                     </li>
                     <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center' onClick={toggleHamMenu}>
-                      <Link className="hover:text-light-wood block w-full h-full py-4" to="/shop">Shop</Link>
+                      {/*<Link className="hover:text-light-wood block w-full h-full py-4" to="/shop">Shop</Link>*/}
+                      <a href="">Shop</a>
                     </li>
                     <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center' onClick={toggleHamMenu}>
                       <a href="/#services" className="hover:text-light-wood block w-full h-full py-4">Services</a>
