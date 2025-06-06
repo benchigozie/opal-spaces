@@ -20,6 +20,9 @@ function SignForms() {
                         <p className="text-center">Create Account</p>
                     </button>
                 </div>
+                <div>
+                    <p className="text-center text-my-brown">{formType === 'login' ? 'sign in to your Opal Spaces account' : 'Join Opal Spaces and transform your interior!'} </p>
+                </div>
                 <div className="w-full">
                     {
                         formType === 'login' ? <Login /> : <SignUp />
