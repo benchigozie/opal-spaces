@@ -33,6 +33,14 @@ html {
   src: url("../src/assets/fonts/inter/Inter_18pt-Bold.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../src/assets/fonts/inter/Inter_18pt-SemiBold.woff2") format("woff2");
+}
+
   @font-face {
     font-family: 'Inria Serif';
     font-style: normal;

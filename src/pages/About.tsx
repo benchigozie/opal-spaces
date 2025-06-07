@@ -3,7 +3,7 @@ import WhoWeAre from "../components/WhoWeAre"
 import WhyChooseUS from "../components/WhyChooseUS"
 function About() {
   return (
-    <div className="pt-14">
+    <div className="pt-12 bg-my-white">
       <WhoWeAre />
       <OurPhilosophy />
       <WhyChooseUS />
