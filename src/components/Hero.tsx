@@ -2,6 +2,7 @@ import Button from "./Button";
 import heroImage from "../assets/images/hero-image.webp";
 import { motion } from "framer-motion"
 
+
 function Hero() {
   return (
     <section

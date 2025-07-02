@@ -101,7 +101,8 @@ function Header() {
           </div>
         </div>
         <div className='md:flex hidden'>
-          <Button btnText='Get Started' className='bg-light-wood text-my-white rounded-full' />
+          <Link to="/signin"><Button btnText='Get Started' className='bg-light-wood text-my-white rounded-full' /></Link>
+          
         </div>
       </div>
     </header>

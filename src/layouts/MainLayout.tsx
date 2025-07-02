@@ -12,9 +12,8 @@ function MainLayout() {
     return (
         <div className="overflow-x-clip">
             <Header />
-            <main className="">
+            <main className="pt-11 md:pt-14">
                 <Outlet />
-                <SignUp />
             </main>
             <Footer />
         </div>

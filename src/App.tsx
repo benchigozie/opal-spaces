@@ -8,6 +8,7 @@ import Contact from './pages/Contact';
 import NoHeaderLayout from './layouts/NoHeaderLayout';
 import SignForms from './pages/SignForms';
 import Cart from './pages/Cart';
+import SignUp from './components/SignUp';
 
 function App() {
 
