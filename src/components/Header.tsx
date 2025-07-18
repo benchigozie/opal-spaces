@@ -1,13 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import logo from '../assets/images/logo.png';
 import Button from './Button';
 import Hamburger from './Hamburger';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
+import { useAuth } from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import accountImage from '../assets/images/account.png';
+import ordersImage from '../assets/images/orders.png';
+import profileImage from '../assets/images/profile.png';
+import logoutImage from '../assets/images/logout.png';
+import dashboardImage from '../assets/images/dashboard.png'
 
 function Header() {
 
+  const { user, logout } = useAuth();
+  console.log(user);
+  //const userMenuRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    setUserMenuOpen(false);
+    navigate('/');
+  }
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const toggleUserMenuOpen = () => setUserMenuOpen(!userMenuOpen);
 
@@ -26,8 +42,7 @@ function Header() {
             <ul className='flex justify-around'>
               <Link className="hover:text-light-wood" to="/">Home</Link>
               <Link className="hover:text-light-wood" to="/about">About</Link>
-             {/* <Link className="hover:text-light-wood" to="/shop">Shop</Link> */}
-              <a href="" className="hover:text-light-wood">Shop</a>
+              <Link className="hover:text-light-wood" to="/shop">Shop</Link>
               <a href="/#services" className="hover:text-light-wood">Services</a>
               <a href="/#projects" className="hover:text-light-wood">Portfolio</a>
               <Link className="hover:text-light-wood" to="/contact">Contact</Link>
@@ -49,11 +64,12 @@ function Header() {
             {
               userMenuOpen && (
                 <div className='absolute top-full bg-my-white w-48 shadow-md'>
-                  <ul>
-                    <li>a</li>
-                    <li>a</li>
-                    <li>a</li>
-                    <li>a</li>
+                  <ul className='flex flex-col text-sm py-2'>
+                    <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to=""><img src={accountImage} alt="" className="w-6" /><span>{user?.firstName? user.firstName : 'Account'}</span></Link>
+                    <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to=""><img src={ordersImage} alt="" className="w-6" /><span>Orders</span></Link>
+                    <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to=""><img src={profileImage} alt="" className="w-[22px]" /><span>Profile</span></Link>
+                    {user?.role === 'ADMIN' && <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to="/admin/dashboard"><img src={dashboardImage} alt="" className="w-6" /><span>Admin dashboard</span></Link>}
+                    <button className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" onClick={handleLogout}><img src={logoutImage} alt="" className="w-5" /><span>Logout</span></button>
                   </ul>
                 </div>
               )
@@ -82,8 +98,7 @@ function Header() {
                       <Link className="hover:text-light-wood block w-full h-full py-4" to="/about">About</Link>
                     </li>
                     <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center' onClick={toggleHamMenu}>
-                      {/*<Link className="hover:text-light-wood block w-full h-full py-4" to="/shop">Shop</Link>*/}
-                      <a href="">Shop</a>
+                      <Link className="hover:text-light-wood block w-full h-full py-4" to="/shop">Shop</Link>
                     </li>
                     <li className='hover:text-my-brown hover:cursor-pointer hover:bg-gray-200 w-full text-center' onClick={toggleHamMenu}>
                       <a href="/#services" className="hover:text-light-wood block w-full h-full py-4">Services</a>

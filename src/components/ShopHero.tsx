@@ -6,7 +6,7 @@ function ShopHero() {
     <section
       className="relative flex items-center justify-center h-[80vh] md:h-screen bg-cover bg-center text-center text-my-white bg-[url('../assets/images/hero-bg.webp')] font-Inter px-4 md:px-0 z-0"
       style={{ backgroundImage: `url(${heroImage})` }}>
-      <div className="flex flex-col items-center justify-center max-w-[800px] gap-6 z-10 bg-my-brown/50 px-10 md:px-16 py-24 rounded-2xl">
+      <div className="flex flex-col items-center justify-center max-w-[800px] gap-6 z-10 bg-my-brown/50 px-10 md:px-16 py-24 rounded-2xl outline-my-white/50 outline-1">
         <motion.h1
           initial={{ opacity: 0, y: -80 }}  
           animate={{ opacity: 1, y: 0 }}     
