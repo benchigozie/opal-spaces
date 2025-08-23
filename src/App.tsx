@@ -14,7 +14,6 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { useAPIInterceptor } from './hooks/useAPIInterceptor';
 import ProductsDash from './pages/admin/ProductsDash';
 import Orders from './pages/admin/Orders';
-import Inventory from './pages/admin/Inventory';
 import Users from './pages/admin/Users';
 
 
@@ -41,7 +40,6 @@ function App() {
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/products" element={<ProductsDash />} />
           <Route path="/admin/orders" element={<Orders />} />
-          <Route path="/admin/inventory" element={<Inventory />} />
           <Route path="/admin/users" element={<Users />} />
         </Route>
       </Routes>

@@ -30,7 +30,7 @@ function Hero() {
           <Button btnText="Shop Decor" className="hover:bg-light-wood rounded-full border-1 border-light-wood text-light-wood hover:text-my-white hover:cursor-pointer" />
         </motion.div>
       </div>
-      <div className="absolute bg-my-black/50 w-full h-full"></div>
+      <div className="absolute bg-my-black/70 w-full h-full"></div>
     </section>
   )
 }

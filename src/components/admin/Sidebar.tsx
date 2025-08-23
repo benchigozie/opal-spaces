@@ -13,14 +13,12 @@ const Sidebar = () => {
     { name: "Dashboard", path: "/admin/dashboard", image: dashboardImage },
     { name: "Products", path: "/admin/products", image: productImage },
     { name: "Orders", path: "/admin/orders", image: ordersImage },
-    { name: "Inventory", path: "/admin/inventory", image: inventoryImage },
     { name: "Users", path: "/admin/users", image: usersImage },
   ];
 
   const [isBarOpen, setIsbarOpen] = useState<boolean>(window.innerWidth >= 768);
   const { user } = useAuth();
-  console.log('user:', user);
-
+  
   useEffect(() => {
     const handleWidthResize = () => {
       setIsbarOpen(window.innerWidth >= 768);

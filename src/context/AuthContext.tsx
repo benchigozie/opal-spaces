@@ -2,6 +2,9 @@ import { createContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import { isTokenExpired, getToken } from '../utils/authUtils';
 import { useNavigate } from "react-router-dom";
+import syncCartOnLogin from "../utils/syncCart";
+import { useCart } from "./CartContext";
+import { clearCartFromLocalStorage } from "../utils/cartUtils";
 
 type UserType = {
     firstName?: string,
@@ -27,13 +30,13 @@ type AuthProviderProps = {
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: AuthProviderProps) => {
 
-    const navigate = useNavigate();
+
+    const { dispatch } = useCart();
 
     useEffect(() => {
         const token = getToken();
         if (token && isTokenExpired(token)) {
             logout();
-            navigate('/signin');
         }
     }, []);
 
@@ -44,18 +47,23 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [accessToken, setAccessToken] = useState<string | null>(null);
 
+   
     const login = (userData: UserType, token: string,) => {
+        //console.log('this is user Id 1:', userData.id);
         setUser(userData);
         setAccessToken(token);
         localStorage.setItem('accessToken', token);
         localStorage.setItem('user', JSON.stringify(userData));
+        console.log('this is user Id:', userData.id);
+        
     };
-
     const logout = () => {
         setUser(null);
         setAccessToken(null);
         localStorage.removeItem('accessToken');
         localStorage.removeItem('user');
+        dispatch({ type: "CLEAR_CART" });
+        clearCartFromLocalStorage();
     };
 
     useEffect(() => {
@@ -69,9 +77,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         }
     }, []);
 
-    useEffect(() => {
-        
-    }, []);
 
     return (
         <AuthContext.Provider value={{ user, login, logout, isLoggedIn, token: accessToken }}>

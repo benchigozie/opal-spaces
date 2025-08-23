@@ -10,7 +10,6 @@ import SignUp from "../components/NewsSignUp";
 
 
 function Home() {
-
   return (
     <div>
       <Hero />

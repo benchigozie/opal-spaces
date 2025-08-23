@@ -1,5 +1,6 @@
 
 function Welcome() {
+ 
   return (
     <section className="flex flex-col items-center py-12 px-4 bg-my-white relative overflow-clip">
         <div className="flex flex-col items-center font-Inter max-w-[800px] gap-2 z-10">

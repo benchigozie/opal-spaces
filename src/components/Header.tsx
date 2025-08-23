@@ -69,16 +69,17 @@ function Header() {
                     <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to=""><img src={ordersImage} alt="" className="w-6" /><span>Orders</span></Link>
                     <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to=""><img src={profileImage} alt="" className="w-[22px]" /><span>Profile</span></Link>
                     {user?.role === 'ADMIN' && <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to="/admin/dashboard"><img src={dashboardImage} alt="" className="w-6" /><span>Admin dashboard</span></Link>}
-                    <button className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" onClick={handleLogout}><img src={logoutImage} alt="" className="w-5" /><span>Logout</span></button>
+                    {user ? <button className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" onClick={handleLogout}><img src={logoutImage} alt="" className="w-5" /><span>Logout</span></button> : <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to="/signin"><img src={logoutImage} alt="" className="w-6" /><span>Sign In</span></Link>}
+                    
                   </ul>
                 </div>
               )
             }
           </div>
 
-          <div>
+          <Link to="/cart" className='relative'>
             <img src="src/assets/images/shopping-cart.png" alt="" className='h-6' />
-          </div>
+          </Link>
           <div>
             <Hamburger isOpen={hamMenuOpen} toggle={toggleHamMenu} />
             <AnimatePresence>

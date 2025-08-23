@@ -3,8 +3,11 @@ import Product from "./Product";
 import { useCallback, useEffect, useState } from "react";
 import api from "../api/axios";
 import { animateValue } from "framer-motion";
+import { useCart } from "../context/CartContext";
 
 function Products() {
+
+  const { dispatch } = useCart();
 
   const [listOption, setListOption] = useState('All');
 
@@ -15,15 +18,15 @@ function Products() {
     name: string;
     rating: number;
     price: number;
-    image: string;
+    images: { url : string }[];
     averageRating?: number;
     id?: string;
   };
 
   const fetchProducts = useCallback(async () => {
     try {
-      const response = await api.get('api/products/all');
-      setProducts(response.data); 
+      const response = await api.get('api/products/all?page=1&limit=20');
+      setProducts(response.data.products); 
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -32,6 +35,20 @@ function Products() {
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
+
+  const handleAddToCart = (product: ProductType) => { 
+    console.log('This is the product', product);
+    dispatch({
+      type: "ADD_ITEM",
+      payload: {
+        id: product.id!,
+        name: product.name,
+        price: product.price,
+        image: product.images[0]?.url || "",
+        quantity: 1
+      }
+    });
+  };
 
   return (
     <section>
@@ -63,8 +80,8 @@ function Products() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-my-white">
               {
                 products.map((product) => {
-                  console.log(product);
-                  return (<Product image={product.image} name={product.name} price={product.price} averageRating={product.averageRating}/>)
+                  console.log('This is product image', product.images);
+                  return (<Product key={product.id} images={product.images} name={product.name} price={product.price} averageRating={product.averageRating} onAddToCart={() => handleAddToCart(product)}/>)
                 })
               }
           </div>
