@@ -65,7 +65,7 @@ function Cart() {
                 <p>&#8358;{(calculateTotal() + shippingFee).toLocaleString() }</p>
               </div>
               <div className="flex flex-col gap-2">
-                <button className="rounded-full py-3 hover:bg-gray-200 hover:text-my-gray cursor-pointer bg-light-wood text-my-white w-full flex justify-center items-center gap-4"><span>Proceed to Checkout</span> <img src={arrow} className="w-6" alt="" /></button>
+                <Link to="/checkout" className="rounded-full py-3 hover:bg-gray-200 hover:text-my-gray cursor-pointer bg-light-wood text-my-white w-full flex justify-center items-center gap-4"><span>Proceed to Checkout</span> <img src={arrow} className="w-6" alt="" /></Link>
                 <div>
                   <Link to="" className="hover:text-light-wood underline">Continue Shopping</Link>
                 </div>

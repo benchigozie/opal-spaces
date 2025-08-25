@@ -15,14 +15,17 @@ import { useAPIInterceptor } from './hooks/useAPIInterceptor';
 import ProductsDash from './pages/admin/ProductsDash';
 import Orders from './pages/admin/Orders';
 import Users from './pages/admin/Users';
+import Checkout from './pages/Checkout';
+import PaymentSuccess from './pages/PaymentSuccess';
+import PaymentFailed from './pages/PaymentFailed';
 
 
-const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID; 
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 function App() {
 
   useAPIInterceptor();
-  
+
   return (
     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
       <Routes>
@@ -32,6 +35,9 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/payment-failed" element={<PaymentFailed />} />
         </Route>
         <Route element={<NoHeaderLayout />}>
           <Route path="signin" element={<SignForms />} />
