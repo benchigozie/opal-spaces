@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import dashboardImage from '../../assets/images/dashboard.png'
 import ordersImage from '../../assets/images/orders.png';
 import productImage from '../../assets/images/products.png'
-import inventoryImage from '../../assets/images/inventory.png';
 import usersImage from '../../assets/images/users.png';
 import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";

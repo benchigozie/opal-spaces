@@ -2,7 +2,6 @@ import Filter from "./Filter"
 import Product from "./Product";
 import { useCallback, useEffect, useState } from "react";
 import api from "../api/axios";
-import { animateValue } from "framer-motion";
 import { useCart } from "../context/CartContext";
 
 function Products() {

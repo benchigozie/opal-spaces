@@ -1,8 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import { isTokenExpired, getToken } from '../utils/authUtils';
-import { useNavigate } from "react-router-dom";
-import syncCartOnLogin from "../utils/syncCart";
 import { useCart } from "./CartContext";
 import { clearCartFromLocalStorage } from "../utils/cartUtils";
 

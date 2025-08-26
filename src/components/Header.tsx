@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import logo from '../assets/images/logo.png';
 import Button from './Button';
 import Hamburger from './Hamburger';
