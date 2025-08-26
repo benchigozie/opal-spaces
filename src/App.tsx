@@ -28,7 +28,6 @@ function App() {
 
   return (
     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-      <BrowserRouter>
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
@@ -50,7 +49,6 @@ function App() {
             <Route path="/admin/users" element={<Users />} />
           </Route>
         </Routes>
-      </BrowserRouter>
     </GoogleOAuthProvider>
 
   )
