@@ -7,7 +7,7 @@ export default function PaymentSuccess() {
     const ref = params.get("reference");
 
     return (
-        <div className="flex justify-center py-24">
+        <div className="flex justify-center py-24 font-Inter">
             <div className="max-w-[500px] flex flex-col items-center gap-2">
                 <CheckCircle className="w-20 h-20 text-green-600 mb-4" />
                 <h1 className="text-2xl font-bold text-green-600">Payment Successful!</h1>
