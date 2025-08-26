@@ -10,7 +10,10 @@ import accountImage from '../assets/images/account.png';
 import ordersImage from '../assets/images/orders.png';
 import profileImage from '../assets/images/profile.png';
 import logoutImage from '../assets/images/logout.png';
-import dashboardImage from '../assets/images/dashboard.png'
+import dashboardImage from '../assets/images/dashboard.png';
+import shoppingCartIcon from '../assets/images/shopping-cart.png';
+import userIcon from '../assets/images/user.png';
+import downChevron from '../assets/images/down-arrow.png';
 
 function Header() {
 
@@ -52,12 +55,12 @@ function Header() {
         <div className='flex gap-4 md:gap-8'>
           <div>
             <div className='flex cursor-pointer items-center' onClick={toggleUserMenuOpen}>
-              <img src="src/assets/images/user.png" alt="" className='h-6' />
+              <img src={userIcon} alt="" className='h-6' />
               <motion.div
                 animate={{ rotate: userMenuOpen ? 180 : 0 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
               >
-                <img src="src/assets/images/down-arrow.png" alt="" className='h-4' />
+                <img src={downChevron} alt="" className='h-4' />
               </motion.div>
 
             </div>
@@ -78,7 +81,7 @@ function Header() {
           </div>
 
           <Link to="/cart" className='relative'>
-            <img src="src/assets/images/shopping-cart.png" alt="" className='h-6' />
+            <img src={shoppingCartIcon} alt="" className='h-6' />
           </Link>
           <div>
             <Hamburger isOpen={hamMenuOpen} toggle={toggleHamMenu} />
