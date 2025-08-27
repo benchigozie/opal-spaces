@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import accountImage from '../assets/images/account.png';
 import ordersImage from '../assets/images/orders.png';
 import profileImage from '../assets/images/profile.png';
@@ -18,6 +19,8 @@ import downChevron from '../assets/images/down-arrow.png';
 function Header() {
 
   const { user, logout } = useAuth();
+  const { state } = useCart();
+  const cartItemCount = state.items.reduce((total, item) => total + item.quantity, 0);
   console.log(user);
   //const userMenuRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
@@ -68,12 +71,12 @@ function Header() {
               userMenuOpen && (
                 <div className='absolute top-full bg-my-white w-48 shadow-md'>
                   <ul className='flex flex-col text-sm py-2'>
-                    <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to=""><img src={accountImage} alt="" className="w-6" /><span>{user?.firstName? user.firstName : 'Account'}</span></Link>
+                    <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to=""><img src={accountImage} alt="" className="w-6" /><span>{user?.firstName ? user.firstName : 'Account'}</span></Link>
                     <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to=""><img src={ordersImage} alt="" className="w-6" /><span>Orders</span></Link>
                     <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to=""><img src={profileImage} alt="" className="w-[22px]" /><span>Profile</span></Link>
                     {user?.role === 'ADMIN' && <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to="/admin/dashboard"><img src={dashboardImage} alt="" className="w-6" /><span>Admin dashboard</span></Link>}
                     {user ? <button className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" onClick={handleLogout}><img src={logoutImage} alt="" className="w-5" /><span>Logout</span></button> : <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to="/signin"><img src={logoutImage} alt="" className="w-6" /><span>Sign In</span></Link>}
-                    
+
                   </ul>
                 </div>
               )
@@ -81,6 +84,13 @@ function Header() {
           </div>
 
           <Link to="/cart" className='relative'>
+            {cartItemCount > 0 &&
+              <p className='bg-light-wood text-[9px] w-4 h-4 rounded-full flex justify-center items-center text-my-white absolute -right-1 -top-[6px]'>
+                <span>
+                  {cartItemCount}
+                </span>
+              </p>
+            }
             <img src={shoppingCartIcon} alt="" className='h-6' />
           </Link>
           <div>
@@ -121,7 +131,7 @@ function Header() {
         </div>
         <div className='md:flex hidden'>
           <Link to="/signin"><Button btnText='Get Started' className='bg-light-wood text-my-white rounded-full' /></Link>
-          
+
         </div>
       </div>
     </header>
