@@ -9,33 +9,36 @@ function Products() {
   const { dispatch } = useCart();
 
   const [listOption, setListOption] = useState('All');
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   const options = ['All', 'Decor', 'Furniture', 'Lighting'];
-  const [ products, setProducts ] =  useState<ProductType[]>([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
 
   type ProductType = {
     name: string;
     rating: number;
     price: number;
-    images: { url : string }[];
+    images: { url: string }[];
     averageRating?: number;
     id?: string;
   };
 
   const fetchProducts = useCallback(async () => {
     try {
-      const response = await api.get('api/products/all?page=1&limit=20');
-      setProducts(response.data.products); 
+      const response = await api.get(`api/products/all?page=${page}&limit=20`);
+      setProducts(response.data.products);
+      setTotalPages(response.data.totalPages);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
 
-  const handleAddToCart = (product: ProductType) => { 
+  const handleAddToCart = (product: ProductType) => {
     console.log('This is the product', product);
     dispatch({
       type: "ADD_ITEM",
@@ -77,12 +80,33 @@ function Products() {
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-my-white">
-              {
-                products.map((product) => {
-                  console.log('This is product image', product.images);
-                  return (<Product key={product.id} images={product.images} name={product.name} price={product.price} averageRating={product.averageRating} onAddToCart={() => handleAddToCart(product)}/>)
-                })
-              }
+            {
+              products.map((product) => {
+                console.log('This is product image', product.images);
+                return (<Product key={product.id} images={product.images} name={product.name} price={product.price} averageRating={product.averageRating} onAddToCart={() => handleAddToCart(product)} />)
+              })
+            }
+          </div>
+          <div className="flex justify-center items-center gap-4 mt-6 font-Inter">
+            <button
+              onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+              disabled={page === 1}
+              className="px-4 py-2 bg-light-wood text-my-white rounded disabled:opacity-50"
+            >
+              Prev
+            </button>
+
+            <span className="text-sm">
+              Page {page} of {totalPages}
+            </span>
+
+            <button
+              onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+              disabled={page === totalPages}
+              className="px-4 py-2 bg-light-wood text-my-white rounded disabled:opacity-50"
+            >
+              Next
+            </button>
           </div>
 
         </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import logo from '../assets/images/logo.png';
 import Button from './Button';
 import Hamburger from './Hamburger';
@@ -20,6 +20,7 @@ function Header() {
 
   const { user, logout } = useAuth();
   const { state } = useCart();
+  const userMenuRef = useRef(null);
   const cartItemCount = state.items.reduce((total, item) => total + item.quantity, 0);
   console.log(user);
   //const userMenuRef = useRef<HTMLDivElement>(null);
@@ -36,6 +37,20 @@ function Header() {
   const [hamMenuOpen, setHamMenuOpen] = useState(false);
 
   const toggleHamMenu = () => setHamMenuOpen(!hamMenuOpen);
+
+  useEffect(() => {
+    if (!userMenuOpen) return;
+    const handleClickOutside = (event: MouseEvent) => {
+      if (userMenuRef.current && !(userMenuRef.current as any).contains(event.target)) {
+        setUserMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [userMenuOpen]);
 
   return (
     <header className="bg-my-white flex justify-center py-2 shadow-md fixed w-full font-Inter text-my-black z-20">
@@ -56,7 +71,7 @@ function Header() {
           </nav>
         </div>
         <div className='flex gap-4 md:gap-8'>
-          <div>
+          <div ref={userMenuRef}>
             <div className='flex cursor-pointer items-center' onClick={toggleUserMenuOpen}>
               <img src={userIcon} alt="" className='h-6' />
               <motion.div
