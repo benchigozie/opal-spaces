@@ -1,9 +1,8 @@
-import Filter from "./Filter"
 import Product from "./Product";
 import { useCallback, useEffect, useState } from "react";
 import api from "../api/axios";
 import { useCart } from "../context/CartContext";
-import { li } from "framer-motion/client";
+import Sort from "./Sort";
 
 function Products() {
 
@@ -12,6 +11,15 @@ function Products() {
   const [listOption, setListOption] = useState('All');
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [sortOption, setSortOption] = useState("newest"); 
+
+   const sortOptions = [
+    { label: "Newest", value: "newest" },
+    { label: "Oldest", value: "oldest" },
+    { label: "Price: Low to High", value: "low-high" },
+    { label: "Price: High to Low", value: "high-low" },
+    { label: "Most Popular", value: "popular" },
+  ];
 
   const options = ['All', 'Decor', 'Furniture', 'Lighting'];
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -28,21 +36,21 @@ function Products() {
   const fetchProducts = useCallback(async () => {
     try {
       const categoryQuery = listOption !== "All" ? `&category=${listOption.toLowerCase()}` : "";
-      const response = await api.get(`api/products/all?page=${page}&limit=20${categoryQuery}`);
+      const response = await api.get(`api/products/all?page=${page}&limit=20${categoryQuery}&sort=${sortOption}`);
       setProducts(response.data.products);
       setTotalPages(response.data.totalPages);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
-  }, [page, listOption]);
+  }, [page, listOption, sortOption]);
 
   useEffect(() => {
     fetchProducts();
-  }, [listOption]);
+  }, [listOption, sortOption]);
 
   useEffect(() => {
     setPage(1);
-  }, [listOption]);
+  }, [listOption, sortOption]);
 
   const handleAddToCart = (product: ProductType) => {
     dispatch({
@@ -59,7 +67,7 @@ function Products() {
 
   return (
     <section>
-      <Filter />
+      <Sort sortOption={sortOption} setSortOption={setSortOption} />
       <div className="py-8 md:py-12">
         <div className="max-w-[1300px] mx-auto px-4 flex flex-col gap-6">
           <div className="">
