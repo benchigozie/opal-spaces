@@ -22,8 +22,7 @@ function Header() {
   const { state } = useCart();
   const userMenuRef = useRef(null);
   const cartItemCount = state.items.reduce((total, item) => total + item.quantity, 0);
-  console.log(user);
-  //const userMenuRef = useRef<HTMLDivElement>(null);
+  
   const navigate = useNavigate();
 
   const handleLogout = () => {

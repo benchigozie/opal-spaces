@@ -3,6 +3,7 @@ import Product from "./Product";
 import { useCallback, useEffect, useState } from "react";
 import api from "../api/axios";
 import { useCart } from "../context/CartContext";
+import { li } from "framer-motion/client";
 
 function Products() {
 
@@ -26,20 +27,24 @@ function Products() {
 
   const fetchProducts = useCallback(async () => {
     try {
-      const response = await api.get(`api/products/all?page=${page}&limit=20`);
+      const categoryQuery = listOption !== "All" ? `&category=${listOption.toLowerCase()}` : "";
+      const response = await api.get(`api/products/all?page=${page}&limit=20${categoryQuery}`);
       setProducts(response.data.products);
       setTotalPages(response.data.totalPages);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
-  }, [page]);
+  }, [page, listOption]);
 
   useEffect(() => {
     fetchProducts();
-  }, [fetchProducts]);
+  }, [listOption]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [listOption]);
 
   const handleAddToCart = (product: ProductType) => {
-    console.log('This is the product', product);
     dispatch({
       type: "ADD_ITEM",
       payload: {
@@ -71,7 +76,11 @@ function Products() {
                     name="filter"
                     value={option}
                     checked={listOption === option}
-                    onChange={() => setListOption(option)}
+                    onChange={() => {
+                      console.log("this is option in func", option);
+                      setListOption(option);
+                      console.log("this is list option in func 2", listOption);
+                    }}
                     className="hidden"
                   />
                   {option}
@@ -82,7 +91,6 @@ function Products() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-my-white">
             {
               products.map((product) => {
-                console.log('This is product image', product.images);
                 return (<Product key={product.id} images={product.images} name={product.name} price={product.price} averageRating={product.averageRating} onAddToCart={() => handleAddToCart(product)} />)
               })
             }

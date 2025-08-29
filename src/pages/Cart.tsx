@@ -9,10 +9,8 @@ import { clearCartFromLocalStorage } from "../utils/cartUtils";
 function Cart() {
 
   const { state, dispatch } = useCart();
-  console.log('This is the cart state', state);
   const shippingFee = 3000;
 
-  console.log('This is the cart state', state.items);
 
   const calculateTotal = () => {
     
