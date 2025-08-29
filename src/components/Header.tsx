@@ -87,7 +87,7 @@ function Header() {
                 <div className='absolute top-full bg-my-white w-48 shadow-md'>
                   <ul className='flex flex-col text-sm py-2'>
                     <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to=""><img src={accountImage} alt="" className="w-6" /><span>{user?.firstName ? user.firstName : 'Account'}</span></Link>
-                    <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to=""><img src={ordersImage} alt="" className="w-6" /><span>Orders</span></Link>
+                    {user ? <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to="/orders"><img src={ordersImage} alt="" className="w-6" /><span>Orders</span></Link> : null}
                     <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to=""><img src={profileImage} alt="" className="w-[22px]" /><span>Profile</span></Link>
                     {user?.role === 'ADMIN' && <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to="/admin/dashboard"><img src={dashboardImage} alt="" className="w-6" /><span>Admin dashboard</span></Link>}
                     {user ? <button className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" onClick={handleLogout}><img src={logoutImage} alt="" className="w-5" /><span>Logout</span></button> : <Link className="py-2 px-2 hover:bg-light-wood/40 flex gap-3 items-center" to="/signin"><img src={logoutImage} alt="" className="w-6" /><span>Sign In</span></Link>}

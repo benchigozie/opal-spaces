@@ -79,11 +79,11 @@ export default function PaymentSuccess() {
                 </Link>
             </div>
             {order && (
-                <div className="w-full max-w-[700px] mt-4">
+                <div className="w-full max-w-[700px] mt-4 text-my-black">
                     <h2 className="font-semibold mb-2">Your Order:</h2>
                     <ul className="space-y-2">
                         {order.items.map((item) => (
-                            <li key={item.id} className="flex justify-between border border-light-wood p-2 rounded shadow-sm">
+                            <li key={item.id} className="flex justify-between border border-light-wood p-4 rounded shadow-sm text-my-gray">
                                 <span>{item.product.name} x {item.quantity}</span>
                                 <span>&#8358; {item.subtotal.toLocaleString()}</span>
                             </li>

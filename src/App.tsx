@@ -13,7 +13,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { useAPIInterceptor } from './hooks/useAPIInterceptor';
 import ProductsDash from './pages/admin/ProductsDash';
-import Orders from './pages/admin/Orders';
+import Orders from './pages/Orders';
 import Users from './pages/admin/Users';
 import Checkout from './pages/Checkout';
 import PaymentSuccess from './pages/PaymentSuccess';
@@ -38,6 +38,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
             <Route path="/payment-failed" element={<PaymentFailed />} />
+            <Route path="/orders" element={<Orders />} />
           </Route>
           <Route element={<NoHeaderLayout />}>
             <Route path="signin" element={<SignForms />} />
