@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { useState } from 'react';
 import Modal from './Modal';
+import ReCAPTCHA from "react-google-recaptcha";
 
 type SignupFormValues = {
   firstName: string,
@@ -37,6 +38,7 @@ function SignUp() {
 
   const [formMessage, setFormMessage] = useState<string>('');
   const [isMessageModalOpen, setIsMessageModalOpen] = useState<boolean>(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const toggleModal = () => { setIsMessageModalOpen(!isMessageModalOpen) };
   const registerUser = async (
@@ -45,7 +47,7 @@ function SignUp() {
   ) => {
     toggleModal();
     try {
-      const response = await axios.post(`${SERVER_URL}/api/auth/register`, userInfo);
+      const response = await axios.post(`${SERVER_URL}/api/auth/register`, {userInfo, captchaToken});
       console.log(response.data);
       setFormMessage(response.data.message);
       actions.resetForm();
@@ -69,6 +71,12 @@ function SignUp() {
   return (
     <div className="w-full">
       <Formik initialValues={initialValues} validationSchema={SignupSchema} onSubmit={(values, actions) => {
+        if (!captchaToken) {
+          setFormMessage("Please complete the CAPTCHA");
+          setIsMessageModalOpen(true);
+          actions.setSubmitting(false);
+          return;
+        }
         registerUser(values, actions);
       }}>
         {({ isSubmitting }) => (
@@ -97,6 +105,12 @@ function SignUp() {
               <label htmlFor="confirm-password" className="text-my-brown">Confirm password</label>
               <Field name="confirmPassword" type="password" id="confirm-password" className="rounded-full shadow-sm py-2 px-4 outline-light-wood/20 focus:outline-light-wood outline-1 caret-light-wood text-my-brown" />
               <ErrorMessage name="confirmPassword" component="div" className="text-orange-600 text-sm" />
+            </div>
+            <div className="flex justify-center mt-2 mb-4">
+              <ReCAPTCHA
+                sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                onChange={(token) => setCaptchaToken(token)}
+              />
             </div>
             <button type="submit" className="text-my-white bg-light-wood py-2 min-w-28 px-4 hover:cursor-pointer hover:bg-my-brown rounded-full">Create Account</button>
             {isMessageModalOpen ? <Modal onClose={toggleModal} message={formMessage} isSubmitting={isSubmitting}/> : null}
