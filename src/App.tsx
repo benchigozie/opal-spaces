@@ -18,6 +18,7 @@ import Users from './pages/admin/Users';
 import Checkout from './pages/Checkout';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentFailed from './pages/PaymentFailed';
+import SearchResults from './pages/SearchResults';
 
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
@@ -39,6 +40,7 @@ function App() {
             <Route path="/payment-success" element={<PaymentSuccess />} />
             <Route path="/payment-failed" element={<PaymentFailed />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/search" element={<SearchResults />} />
           </Route>
           <Route element={<NoHeaderLayout />}>
             <Route path="signin" element={<SignForms />} />

@@ -13,14 +13,6 @@ function Products() {
   const [totalPages, setTotalPages] = useState(1);
   const [sortOption, setSortOption] = useState("newest"); 
 
-   const sortOptions = [
-    { label: "Newest", value: "newest" },
-    { label: "Oldest", value: "oldest" },
-    { label: "Price: Low to High", value: "low-high" },
-    { label: "Price: High to Low", value: "high-low" },
-    { label: "Most Popular", value: "popular" },
-  ];
-
   const options = ['All', 'Decor', 'Furniture', 'Lighting'];
   const [products, setProducts] = useState<ProductType[]>([]);
 
