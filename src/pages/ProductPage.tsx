@@ -5,7 +5,6 @@ import StarRating from "../components/StarRating";
 import { ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import Modal from "../components/Modal";
-import { set } from "lodash";
 
 type ProductProps = {
     name: string,
