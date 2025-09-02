@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import api from "../api/axios";
 import { useCart } from "../context/CartContext";
 import Sort from "./Sort";
+import Loading from "./Loading";
 
 function Products() {
 
@@ -12,6 +13,8 @@ function Products() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [sortOption, setSortOption] = useState("newest"); 
+  const [ isLoading, setIsLoading ] = useState(true);
+
 
   const options = ['All', 'Decor', 'Furniture', 'Lighting'];
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -22,15 +25,19 @@ function Products() {
     price: number;
     images: { url: string }[];
     averageRating?: number;
+    description?: string;
     id?: string;
   };
 
   const fetchProducts = useCallback(async () => {
+
     try {
       const categoryQuery = listOption !== "All" ? `&category=${listOption.toLowerCase()}` : "";
       const response = await api.get(`api/products/all?page=${page}&limit=20${categoryQuery}&sort=${sortOption}`);
+      console.log("these are the products", response.data.products);
       setProducts(response.data.products);
       setTotalPages(response.data.totalPages);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -56,6 +63,12 @@ function Products() {
       }
     });
   };
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
 
   return (
     <section>
@@ -91,7 +104,7 @@ function Products() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-my-white">
             {
               products.map((product) => {
-                return (<Product key={product.id} images={product.images} name={product.name} price={product.price} averageRating={product.averageRating} onAddToCart={() => handleAddToCart(product)} />)
+                return (<Product key={product.id} idString={product.id} images={product.images} name={product.name} price={product.price} averageRating={product.averageRating} onAddToCart={() => handleAddToCart(product)}/>)
               })
             }
           </div>

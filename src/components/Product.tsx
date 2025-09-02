@@ -1,18 +1,34 @@
 import Button from "./Button";
 import StarRating from "./StarRating";
+import { useNavigate } from "react-router-dom";
 
 type ProductProps = {
   name: string,
   price: number,
   images: { url: string }[],
   averageRating?: number,
+  idString?: string,
   onAddToCart?: () => void
 }
 
-function Product({ name, price, images, averageRating, onAddToCart }: ProductProps) {
+function Product({ name, price, images, averageRating, onAddToCart, idString}: ProductProps) {
+
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/products/${idString}`);
+  };
+
+  const handleAddToCartClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); 
+    onAddToCart?.();
+  };
 
   return (
-    <div className="border-1 text-[15px] border-light-wood text-my-gray grid grid-rows-[0.9fr_1fr]">
+    <div 
+    onClick={handleCardClick}
+    className="border-1 text-[15px] border-light-wood text-my-gray grid grid-rows-[0.9fr_1fr]"
+    >
       <div className="w-full">
 
         {
@@ -33,11 +49,11 @@ function Product({ name, price, images, averageRating, onAddToCart }: ProductPro
           <h4 className="text-my-black font-Inria font-bold text-lg">{name}</h4>
         </div>
         <div>
-          <StarRating rating={averageRating ?? 0} amount={100} />
+          <StarRating rating={averageRating ?? 0} />
         </div>
         <div className="flex items-center justify-between">
           <p>&#8358;{price}</p>
-          <Button btnText="Add to Cart" onClick={onAddToCart} className="text-my-white bg-light-wood hover:bg-light-wood/0 hover:text-light-wood rounded-full border-1 border-light-wood hover:cursor-pointer" />
+          <Button btnText="Add to Cart" onClick={handleAddToCartClick} className="text-my-white bg-light-wood hover:bg-light-wood/0 hover:text-light-wood rounded-full border-1 border-light-wood hover:cursor-pointer" />
         </div>
       </div>
     </div>

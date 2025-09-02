@@ -3,10 +3,9 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
 type starRatingProps = {
     rating: number,
-    amount: number,
 };
 
-function StarRating( { rating, amount } : starRatingProps) {
+function StarRating( { rating } : starRatingProps) {
 
 
 const stars = []
@@ -25,7 +24,6 @@ const stars = []
             <div className="flex text-lg">
             {stars}
             </div>
-            <span className="text-sm text-my-gray ml-2">{amount}</span>
         </div>
   )
 }

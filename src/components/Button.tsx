@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 type ButtonProps = {
     btnText: string;
     className?: string;
-    onClick?: () => void;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 function Button({btnText, className, onClick } : ButtonProps) {

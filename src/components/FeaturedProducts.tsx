@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import { useCart } from "../context/CartContext";
+import Loading from "./Loading";
 
 type ProductType = {
     name: string;
@@ -17,12 +18,14 @@ type ProductType = {
 function FeaturedProducts() {
     const [products, setProducts] = useState<ProductType[]>([]);
     const { dispatch } = useCart();
+    const [ isLoading, setIsLoading ] = useState(true);
 
     const fetchProducts = async () => {
         try {
             const response = await api.get('api/products/featured');
             console.log('Featured Products:', response.data.products);
             setProducts(response.data.products);
+            setIsLoading(false);
         } catch (error) {
             console.error("Error fetching featured products:", error);
         }
@@ -46,6 +49,12 @@ function FeaturedProducts() {
         fetchProducts();
     }, []);
 
+    if (isLoading) {
+        return (
+            <Loading />
+        )
+    }
+
     return (
         <section className="py-12 bg-my-white px-4">
             <div className="flex flex-col gap-12 max-w-[1300px] mx-auto">
@@ -61,6 +70,7 @@ function FeaturedProducts() {
                                 price={product.price}
                                 images={product.images}
                                 averageRating={product.averageRating}
+                                idString={product.id}
                                 onAddToCart={() => handleAddToCart(product)}
                             />
                         ))

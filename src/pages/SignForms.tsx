@@ -8,7 +8,7 @@ function SignForms() {
 
     const [formType, setFormType] = useState<'login' | 'register'>('login');
     return (
-        <div className="w-full min-h-screen bg-my-white flex items-center justify-center font-Inter text-my-brown py-10">
+        <div className="w-full min-h-screen bg-my-white px-2 flex items-center justify-center font-Inter text-my-brown py-10">
             <div className="w-full px-8 md:max-w-[600px] flex flex-col gap-8 bg-white rounded-2xl shadow-lg py-8 md:px-12">
                 <div className="w-full flex justify-center">
                     <img src={logo} alt="" className="w-16 md:w-20"/>
