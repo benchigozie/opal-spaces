@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
-import { isTokenExpired, getToken } from '../utils/authUtils';
 import { useCart } from "./CartContext";
 import { clearCartFromLocalStorage } from "../utils/cartUtils";
 
@@ -18,6 +17,7 @@ type AuthContextType = {
     logout: () => void,
     isLoggedIn: boolean,
     token: string | null,
+    renewToken: (newToken: string) => void; 
 }
 
 type AuthProviderProps = {
@@ -31,12 +31,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     const { dispatch } = useCart();
 
-    useEffect(() => {
+    /*useEffect(() => {
         const token = getToken();
         if (token && isTokenExpired(token)) {
             logout();
         }
-    }, []);
+    }, []);*/
 
     const [user, setUser] = useState<UserType | null>(() => {
         const storedUser = localStorage.getItem('user');
@@ -47,14 +47,19 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
    
     const login = (userData: UserType, token: string,) => {
-        //console.log('this is user Id 1:', userData.id);
         setUser(userData);
         setAccessToken(token);
         localStorage.setItem('accessToken', token);
         localStorage.setItem('user', JSON.stringify(userData));
-        console.log('this is user Id:', userData.id);
+        
         
     };
+
+    const renewToken = (newToken: string) => {
+        setAccessToken(newToken);
+        localStorage.setItem('accessToken', newToken);
+    };
+
     const logout = () => {
         setUser(null);
         setAccessToken(null);
@@ -77,7 +82,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
 
     return (
-        <AuthContext.Provider value={{ user, login, logout, isLoggedIn, token: accessToken }}>
+        <AuthContext.Provider value={{ user, login, logout, isLoggedIn, token: accessToken, renewToken }}>
             {children}
         </AuthContext.Provider>
     );

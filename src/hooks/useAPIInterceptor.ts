@@ -6,7 +6,7 @@ import api from "../api/axios";
 
 export const useAPIInterceptor = () => {
     const navigate = useNavigate();
-    const { logout } = useAuth();
+    const { logout, renewToken, token } = useAuth();
     
     useEffect(() => {
         const requestInterceptor = api.interceptors.request.use(
@@ -34,12 +34,17 @@ export const useAPIInterceptor = () => {
                 try {
                   const res = await api.post("/api/auth/refresh", {}, { withCredentials: true });
       
+                  console.log("token state before refresh:", token);
                   const newAccessToken = res.data.accessToken;
-                  localStorage.setItem("accessToken", newAccessToken);
+                  renewToken(newAccessToken);
+
+                  console.log("Access token refreshed", res);
+                  console.log("token state after refresh:", token);
       
                   originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
                   return api(originalRequest);
                 } catch (refreshError) {
+                  console.error("Token refresh failed:", refreshError);
                   logout();
                   navigate("/signin");
                   return Promise.reject(refreshError);
