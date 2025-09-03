@@ -34,7 +34,7 @@ function Products() {
     try {
       const categoryQuery = listOption !== "All" ? `&category=${listOption.toLowerCase()}` : "";
       const response = await api.get(`api/products/all?page=${page}&limit=20${categoryQuery}&sort=${sortOption}`);
-      console.log("these are the products", response.data.products);
+     
       setProducts(response.data.products);
       setTotalPages(response.data.totalPages);
       setIsLoading(false);

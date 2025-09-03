@@ -23,7 +23,7 @@ function FeaturedProducts() {
     const fetchProducts = async () => {
         try {
             const response = await api.get('api/products/featured');
-            console.log('Featured Products:', response.data.products);
+           
             setProducts(response.data.products);
             setIsLoading(false);
         } catch (error) {
@@ -32,7 +32,7 @@ function FeaturedProducts() {
     }
 
     const handleAddToCart = (product: ProductType) => { 
-        console.log('This is the product', product);
+        
         dispatch({
           type: "ADD_ITEM",
           payload: {
