@@ -13,7 +13,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { useAPIInterceptor } from './hooks/useAPIInterceptor';
 import ProductsDash from './pages/admin/ProductsDash';
-import Orders from './pages/Orders';
+import Orders from './pages/admin/Orders';
 import Users from './pages/admin/Users';
 import Checkout from './pages/Checkout';
 import PaymentSuccess from './pages/PaymentSuccess';

@@ -92,20 +92,21 @@ function Products() {
             <input type="text" className="text-my-gray min-w-1/2 md:min-w-10 outline-none" placeholder="search for a product" />
           </div>
           <div></div>
-          <div onClick={toggleAddModal} className="text-my-white bg-light-wood flex w-36 items-center justify-between px-4 py-2 rounded-lg hover:scale-105 cursor-pointer transition-transform duration-300">
-            <img src={plusImage} alt="" className="w-4 h-4" />
-            <button type='button' className="" >Add Product</button>
+          <div onClick={toggleAddModal} className="text-my-white bg-light-wood flex w-30 md:w-36 items-center justify-between md:px-4 md:py-2 px-3 py-1 rounded-lg hover:scale-105 cursor-pointer transition-transform duration-300">
+            <img src={plusImage} alt="" className="w-3 h-3 md:w-4 md:h-4" />
+            <button type='button' className="text-[14px]" >Add Product</button>
           </div>
         </div>
         <div className="flex flex-col gap-4">
           <table>
             <thead>
-              <tr>
-                <th className='p-3 text-left'>Name</th>
-                <th className='p-3 text-left'>Price</th>
-                <th className='p-3 text-left'>Stock</th>
-                <th className='p-3 text-left'>Status</th>
-                <th className='p-3 text-left'>Actions</th>
+              <tr className='text-[13px] md:text-[15px]'>
+                <th className='p-1 md:p-3 text-left'>Image</th>
+                <th className='p-1 md:p-3 text-left'>Name</th>
+                <th className='p-1 md:p-3 text-left hidden lg:table-cell'>Price</th>
+                <th className='p-1 md:p-3 text-left hidden lg:table-cell'>Stock</th>
+                <th className='p-1 md:p-3 text-left hidden md:table-cell'>Status</th>
+                <th className='p-1 md:p-3 text-left'><span className='hidden md:table-cell'>Actions</span><span className='md:hidden'>A..</span></th>
               </tr>
             </thead>
             <tbody>
@@ -113,8 +114,8 @@ function Products() {
                 products.map((product) => {
                 
                   return (
-                    <tr key={product.id} className="border-t-1 border-gray-300">
-                      <td className="px-3 py-4 flex items-center gap-3 align-middle">
+                    <tr key={product.id} className="border-t-1 border-gray-300 text-[15px]">
+                      <td className="px-1 md:px-3 py-2 md:py-4 gap-3 align-middle">
                         {product.images[0]? (
                           <img
                             src={product.images[0]}
@@ -127,29 +128,31 @@ function Products() {
                           </div>
                         )
                         }
+                      </td>
+                      <td className="px-1 md:px-3 py-2 md:py-4 gap-3 align-middle">
                         <span>{product.name}</span>
                       </td>
-                      <td className="px-3 py-4 align-middle">&#8358;{product.price.toFixed(2)}</td>
-                      <td className="px-3 py-4 align-middle">{product.stock}</td>
-                      <td className="px-3 py-4 align-middle">
+                      <td className="px-1 md:px-3 py-2 md:py-4 align-middle hidden lg:table-cell">&#8358;{product.price.toFixed(2)}</td>
+                      <td className="px-1 md:px-3 py-2 md:py-4 align-middle hidden lg:table-cell">{product.stock}</td>
+                      <td className="px-1 md:px-3 py-2 md:py-4 align-middle hidden md:table-cell">
                         {product.stock > 0 ? (
                           <span className="text-green-400 font-medium">In Stock</span>
                         ) : (
                           <span className="text-red-500 font-medium">Out of Stock</span>
                         )}
                       </td>
-                      <td className="px-3 py-4 align-middle">
-                        <button className="mx-1 py-1 rounded cursor-pointer" onClick={() => {
+                      <td className="px-1 md:px-3 py-2 md:py-4 align-middle">
+                        <button className="mx-1 py-1 rounded cursor-pointer w-5 md:w-7" onClick={() => {
                           editProductFunction(product)}
                           }>
-                          <img src={editImage} alt="" className='w-7' />
+                          <img src={editImage} alt="" className='' />
                         </button>
                         <button 
                           onClick={
                             () => deleteProductFunction(product)
                           }
-                          className="mx-1 py-1 rounded cursor-pointer">
-                          <img src={deleteImage} alt="" className='w-7' />
+                          className="mx-1 py-1 rounded cursor-pointer w-5 md:w-7">
+                          <img src={deleteImage} alt="" />
                         </button>
                       </td>
                     </tr>

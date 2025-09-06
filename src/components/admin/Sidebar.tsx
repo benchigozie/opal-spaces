@@ -32,20 +32,20 @@ const Sidebar = () => {
   return (
     <aside className="md:w-64 bg-white shadow-lg  z-10 flex flex-col justify-between">
       <div>
-        <div className="p-3 md:p-6 text-2xl flex justify-center font-bold font-Inria text-my-black">{
+        <div className="p-3 md:p-6 text-xl md:text-2xl flex justify-center font-bold font-Inria text-my-black">{
           isBarOpen ? <div><span>Opal</span><span className="text-light-wood">Spaces</span></div> : <div><span>O</span><span className="text-light-wood">S</span></div>
         }</div>
-        <nav className="flex flex-col gap-2 p-2 md:p-4">
+        <nav className="flex flex-col gap-2 p-1 md:p-4">
           {navItems.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `px-4 py-2 rounded-md hover:bg-gray-200 flex gap-2 ${isActive ? " font-semibold bg-light-wood" : ""
+                `px-1 md:px-4 py-2 rounded-md hover:bg-gray-200 flex justify-center md:justify-start gap-2 ${isActive ? " font-semibold bg-light-wood" : ""
                 }`
               }
             >
-              <img src={item.image} className="w-6" alt="" />
+              <div className="w-4 md:w-7"><img src={item.image} className="" alt="" /></div>
               <span className={`${isBarOpen ? 'block' : 'hidden'}`}>{item.name}</span>
             </NavLink>
           ))}
@@ -53,7 +53,7 @@ const Sidebar = () => {
       </div>
       <div className={`flex items-center ${!isBarOpen ? 'justify-center' : ''} border-t-2 border-gray-200`}>
         <div className="p-2 md:p-4">
-          <span className="bg-light-wood rounded-full w-12 h-12 text-my-white flex justify-center items-center text-3xl"> {user?.firstName ? user?.firstName[0]?.toUpperCase() : 0}</span>
+          <span className="bg-light-wood rounded-full w-8 h-8 md:h-12 md:w-12 text-my-white flex justify-center items-center text-lg md:text-3xl"> {user?.firstName ? user?.firstName[0]?.toUpperCase() : 0}</span>
         </div>
         <div className={`${isBarOpen ? 'block' : 'hidden'}`}>
           <span className="text-sm font-semibold">{user?.firstName} {user?.lastName}</span>

@@ -23,7 +23,7 @@ function GooglyLogin() {
         { withCredentials: true }
       );
 
-      console.log('Login successful:', response.data.user); 
+      //console.log('Login successful:', response.data.user); 
       login(response.data.user, response.data.accessToken);
       if (response.data.user.role === 'ADMIN') {
         navigate('/admin/dashboard');
@@ -32,13 +32,13 @@ function GooglyLogin() {
       }
 
     } catch (error: any) {
-      console.error('Google login failed:', error.response?.data || error.message);
+      //console.error('Google login failed:', error.response?.data || error.message);
     }
 
   }
 
   const handleError = () => {
-    console.error('Google login was cancelled or failed');
+    //console.error('Google login was cancelled or failed');
   };
   return (
     <GoogleLogin  onSuccess={handleSuccess} onError={handleError}/>
