@@ -132,7 +132,7 @@ function Orders() {
           </div>
         </div>
       </div>
-      {orderModalOpen && <OrderModal id={orderModalId} onClose={() => setorderModalOpen(false)} isSubmitting={true}/>}
+      {orderModalOpen && <OrderModal id={orderModalId} onClose={() => setorderModalOpen(false)} isSubmitting={true} fetchOrders={fetchOrders}/>}
     </div>
   )
 }

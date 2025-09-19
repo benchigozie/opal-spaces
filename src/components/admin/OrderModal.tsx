@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 type orderModalValues = {
     id: string,
     onClose: () => void,
+    fetchOrders?: () => void,
     isSubmitting: boolean,
 }
 
@@ -44,7 +45,7 @@ export interface OrderItem {
 }
 
 
-function OrderModal({ onClose, id, isSubmitting }: orderModalValues) {
+function OrderModal({ onClose, id, isSubmitting, fetchOrders }: orderModalValues) {
 
     const [fetchedOrder, setFetchedOrder] = useState<Order | null>(null);
     const [orderStatus, setOrderStatus] = useState<string>(fetchedOrder?.status || "");
@@ -71,6 +72,7 @@ function OrderModal({ onClose, id, isSubmitting }: orderModalValues) {
             console.log("Order status updated:", response.data.order.status);
             setFetchedOrder(response.data.order);
             setOrderStatus(response.data.order.status);
+            fetchOrders && fetchOrders();
         } catch (error) {
             console.error("Error updating order status:", error);
         }
@@ -100,7 +102,7 @@ function OrderModal({ onClose, id, isSubmitting }: orderModalValues) {
                                     <p className='mb-2'>Order ID: {id}</p>
                                     <div className='relative'>
                                         <button onClick={() => setShowStatusOptions(!showStatusOptions)} className='bg-light-wood text-white px-3 py-2 rounded-md hover:bg-my-brown hover:cursor-pointer'>
-                                            <p>Status: {fetchedOrder?.status}</p>
+                                            <p>Status: {orderStatus}</p>
                                         </button>
                                         <ul className={`bg-gray-100 top-12 text-[13px] w-27 shadow-md absolute ${showStatusOptions ? 'block' : 'hidden'}`}>
                                             {statusOptions.map((status) => (

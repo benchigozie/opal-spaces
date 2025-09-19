@@ -15,6 +15,7 @@ export const useAPIInterceptor = () => {
         if (!token) console.log("No token available");
         if (token && !isTokenExpired(token)) {
           config.headers.Authorization = `Bearer ${token}`;
+          console.log("Outgoing request headers:", config.headers);
         }
 
         return config;
