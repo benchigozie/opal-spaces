@@ -16,6 +16,7 @@ type Cart = {
 
 const CART_KEY = "guestCart";
 
+
 export function saveCartToLocalStorage(cart: Cart) {
   try {
     

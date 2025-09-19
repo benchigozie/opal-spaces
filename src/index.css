@@ -4,6 +4,16 @@ html {
   scroll-behavior: smooth;
 }
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;  
+}
+
+
 @theme {
     --color-light-wood: #D1A26D;
     --color-very-light-wood: #E5DBDB;
