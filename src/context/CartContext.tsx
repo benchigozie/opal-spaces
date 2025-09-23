@@ -106,7 +106,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
      clearCartFromLocalStorage();
  }
 
-  /*useEffect(() => {
+  useEffect(() => {
     const load = async () => {
       const cart = await fetchCart(user?.id);
       dispatch({ type: "SET_CART", payload: cart });
@@ -117,7 +117,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     };
     load();
         
-  }, [user]);*/
+  }, [user]);
 
   useEffect(() => {
     saveCartToLocalStorage(state);

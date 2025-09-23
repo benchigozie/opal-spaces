@@ -104,7 +104,7 @@ function OrderModal({ onClose, id, isSubmitting, fetchOrders }: orderModalValues
                                         <button onClick={() => setShowStatusOptions(!showStatusOptions)} className='bg-light-wood text-white px-3 py-2 rounded-md hover:bg-my-brown hover:cursor-pointer'>
                                             <p>Status: {orderStatus}</p>
                                         </button>
-                                        <ul className={`bg-gray-100 top-12 text-[13px] w-27 shadow-md absolute ${showStatusOptions ? 'block' : 'hidden'}`}>
+                                        <ul className={`bg-gray-100 top-10 text-[13px] w-27 shadow-md absolute ${showStatusOptions ? 'block' : 'hidden'}`}>
                                             {statusOptions.map((status) => (
                                                 <li key={status} className='w-full'>
                                                     <button

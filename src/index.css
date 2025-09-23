@@ -9,31 +9,33 @@ html {
 }
 
 .hide-scrollbar {
-  -ms-overflow-style: none; 
-  scrollbar-width: none;  
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 
 @theme {
-    --color-light-wood: #D1A26D;
-    --color-very-light-wood: #E5DBDB;
-    --color-my-brown: #986B39;
-    --color-my-black: #1E1E1E;
-    --color-my-gray: #3A3131;
-    --color-my-white: #FFF8F8;
-    --color-dull-brown: #534441;
+  --color-light-wood: #D1A26D;
+  --color-very-light-wood: #E5DBDB;
+  --color-my-brown: #986B39;
+  --color-my-black: #1E1E1E;
+  --color-my-gray: #3A3131;
+  --color-my-white: #FFF8F8;
+  --color-dull-brown: #534441;
 
-    --font-Inter: 'Inter';
-    --font-Inria: 'Inria Serif';
+  --font-Inter: 'Inter';
+  --font-Inria: 'Inria Serif';
+
 }
 
+
 @font-face {
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url("../src/assets/fonts/inter/Inter_18pt-Regular.woff2") format("woff2");
-  }
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../src/assets/fonts/inter/Inter_18pt-Regular.woff2") format("woff2");
+}
 
 @font-face {
   font-family: Inter;
@@ -51,10 +53,10 @@ html {
   src: url("../src/assets/fonts/inter/Inter_18pt-SemiBold.woff2") format("woff2");
 }
 
-  @font-face {
-    font-family: 'Inria Serif';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url("../src/assets/fonts/inria_serif/InriaSerif-Bold.woff2") format("woff2");
-  }
+@font-face {
+  font-family: 'Inria Serif';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../src/assets/fonts/inria_serif/InriaSerif-Bold.woff2") format("woff2");
+}
