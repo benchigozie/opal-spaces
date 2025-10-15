@@ -33,6 +33,11 @@ export const useAPIInterceptor = () => {
 
 
         const originalRequest = error.config;
+
+        if (originalRequest.url.includes("/api/auth/refresh")) {
+          return Promise.reject(error);
+        }
+        
         if (
           error.response?.status === 401 &&
           !originalRequest._retry
