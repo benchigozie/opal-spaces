@@ -12,12 +12,16 @@ export const useAPIInterceptor = () => {
     const requestInterceptor = api.interceptors.request.use(
       (config) => {
 
+        console.log("Token before request:", token);
         if (!token) console.log("No token available");
         if (token && !isTokenExpired(token)) {
           config.headers.Authorization = `Bearer ${token}`;
-          console.log("Outgoing request headers:", config.headers);
+         
         }
 
+        if (token && isTokenExpired(token)) {
+          
+        }
         return config;
       },
       (error) => Promise.reject(error)
@@ -26,6 +30,8 @@ export const useAPIInterceptor = () => {
     const responseInterceptor = api.interceptors.response.use(
       (response) => response,
       async (error) => {
+
+
         const originalRequest = error.config;
         if (
           error.response?.status === 401 &&

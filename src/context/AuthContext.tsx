@@ -31,19 +31,15 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     const { dispatch } = useCart();
 
-    /*useEffect(() => {
-        const token = getToken();
-        if (token && isTokenExpired(token)) {
-            logout();
-        }
-    }, []);*/
-
     const [user, setUser] = useState<UserType | null>(() => {
         const storedUser = localStorage.getItem('user');
         return storedUser ? JSON.parse(storedUser) : null;
     });
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-    const [accessToken, setAccessToken] = useState<string | null>(null);
+    const [accessToken, setAccessToken] = useState<string | null>(() => {
+        const storedToken = localStorage.getItem('accessToken');
+        return storedToken ? storedToken : null;
+    });
 
    
     const login = (userData: UserType, token: string,) => {

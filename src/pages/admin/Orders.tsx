@@ -31,7 +31,7 @@ function Orders() {
 
   const fetchOrders = async () => {
 
-    setTimeout(async () => {
+      setTimeout(async () => {
       console.log("Fetching orders...");
       try {  
         setLoading(true);
@@ -52,7 +52,10 @@ function Orders() {
   };
 
   useEffect(() => {
-    if (!token) return;
+    if (!token) {
+      console.warn("No token available, cannot fetch orders.");
+      return
+    };
     fetchOrders();
   }, [token, page, statusFilter]);
 
